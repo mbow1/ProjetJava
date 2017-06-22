@@ -1,65 +1,41 @@
 package model;
 
-public class MyCharactere {
-	  /** The Constant SPRITE. */
-    private static final Sprite sprite          = new Sprite('c', "$_35.jpg");
+import java.awt.Point;
 
-    /** The Constant spriteTurnLeft. */
-    private static final Sprite spriteTurnLeft  = new Sprite('c', "MyVehicleLeft.png");
+public class MyCharactere extends Mobile{
+	
+	private Point position;
+	private boolean alive = true;
+	private Direction direction;
+	
+	public Point getPosition() {
+		return position;
+	}
 
-    /** The Constant spriteTurnRight. */
-    private static final Sprite spriteTurnRight = new Sprite('c', "MyVehicleRight.png");
+	public void setPosition(Point position) {
+		this.position = position;
+	}
 
-    /** The Constant spriteExplode. */
-    private static final Sprite spriteExplode   = new Sprite('c', "MyVehicleExplode.png");
-    
-    private static final Sprite spriteUp = new Sprite ('c',"MyVehicleExplode.png");
-    public MyVehicle(final int x, final int y, final IMap map) throws IOException {
-        super(x, y, sprite, road, Permeability.BLOCKING);
-        spriteTurnLeft.loadImage();
-        spriteTurnRight.loadImage();
-        spriteExplode.loadImage();
-    }
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.mobile.Mobile#moveLeft()
-     */
-    @Override
-    public final void moveLeft() {
-        super.moveLeft();
-        this.setSprite(spriteTurnLeft);
-    }
+	public boolean isAlive() {
+		return alive;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.mobile.Mobile#moveRight()
-     */
-    @Override
-    public final void moveRight() {
-        super.moveRight();
-        this.setSprite(spriteTurnRight);
-    }
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.mobile.Mobile#die()
-     */
-    @Override
-    protected final void die() {
-        super.die();
-        this.setSprite(spriteExplode);
-    }
+	public Direction getDirection() {
+		return direction;
+	}
 
-    /*
-     * (non-Javadoc)
-     * @see fr.exia.insanevehicles.model.element.mobile.Mobile#doNothing()
-     */
-    @Override
-    public final void doNothing() {
-        super.doNothing();
-        this.setSprite(sprite);
-    }
-}
+	public void setDirection(Direction direction) {
+		this.direction = direction;
+	}
 
+	public MyCharactere(boolean alive, Point position, Direction direction) {
+		super(alive, position, direction);
+		// TODO Auto-generated constructor stub
+	}
 
 }
+
